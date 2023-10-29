@@ -1,11 +1,18 @@
-﻿
-using MultiPrint;
-using MultiPrint.Documents;
+﻿using MultiPrint.Documents;
+using MultiPrint.Settings;
 using PrintEnumerablesExample;
 using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
+using QuestPDF.Previewer;
 
 var accounts = InvoiceDocumentDataSource.GetAccounts();
 
-var accountsDocument = new EnumerableDocument<AccountModel>(accounts);
-accountsDocument.GeneratePdf();
+var settings = new MultiPrintPageSettings
+{
+    Header = new HeaderSettings
+    {
+        Value = "علاوي الغالي"
+    }
+};
+
+var accountsDocument = new EnumerableDocument<AccountModel>(accounts, settings);
+accountsDocument.ShowInPreviewer();

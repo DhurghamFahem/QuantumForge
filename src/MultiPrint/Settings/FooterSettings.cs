@@ -2,19 +2,17 @@
 
 namespace MultiPrint.Settings;
 
-public class MultiPrintSettings
+public class FooterSettings
 {
-    public HeaderSettings? Header { get; set; } = GetDefaultHeaderSettings();
-    public HeaderSettings? Content { get; set; }
-    public HeaderSettings? Footer { get; set; }
-
-
-    public static HeaderSettings GetDefaultHeaderSettings()
+    public object? Value { get; set; }
+    public bool ShowPageNumber { get; set; }
+    public CellSettings? Settings { get; set; } = GetDefaultSettings();
+    public static CellSettings GetDefaultSettings()
     {
-        return new HeaderSettings
+        return new CellSettings
         {
             TextStyle = TextStyle.Default,
-            BorderBottom = 1,
+            BorderBottom = 0,
             BorderLeft = 0,
             BorderRight = 0,
             BorderTop = 0,

@@ -2,14 +2,11 @@
 
 namespace MultiPrint.Settings;
 
-public class HeaderSettings
+public class ContentSettings
 {
-    public object? Value { get; set; }
-    public float Height { get; set; } = 60;
-    public bool ShowOnce { get; set; }
-    public CellSettings Settings { get; set; } = GetDefaultSettings();
+    public CellSettings Settings { get; set; } = GetDefaultContentSettings();
 
-    public static CellSettings GetDefaultSettings()
+    public static CellSettings GetDefaultContentSettings()
     {
         return new CellSettings
         {

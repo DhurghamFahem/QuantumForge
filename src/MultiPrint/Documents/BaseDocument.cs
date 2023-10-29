@@ -2,7 +2,6 @@
 using MultiPrint.DTOs;
 using MultiPrint.Settings;
 using QuestPDF.Fluent;
-using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using System.Reflection;
 
@@ -13,15 +12,13 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
     protected Dictionary<int, Dictionary<string, object?>> ValueByColumnNameByRowIndex = [];
     protected List<ColumnInfo> ColumnsInfo = [];
     protected readonly IEnumerable<TModel> Models;
-    private readonly MultiPrintSettings? _multiPrintSettings;
+    private readonly MultiPrintPageSettings _multiPrintSettings;
 
-    public BaseDocument(IEnumerable<TModel> models, MultiPrintSettings? multiPrintSettings = null)
+    public BaseDocument(IEnumerable<TModel> models, MultiPrintPageSettings? multiPrintSettings = null)
     {
         QuestPDF.Settings.License = LicenseType.Community;
         Models = models;
-        _multiPrintSettings = multiPrintSettings;
-        if (_multiPrintSettings == null)
-            _multiPrintSettings = new MultiPrintSettings();
+        _multiPrintSettings = multiPrintSettings ?? new();
     }
 
     protected void GenerateColumnsAndValues()
@@ -54,23 +51,42 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
         {
             var nameAttribute = (MultiPrintNameAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintNameAttribute))!;
             var widthAttribute = (MultiPrintWidthAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintWidthAttribute))!;
+            var canSumAttribute = (MultiPrintCanSumAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintCanSumAttribute))!;
 
             var columnInfo = new ColumnInfo
             {
                 Type = property.PropertyType,
                 Name = property.Name,
                 DisplayName = nameAttribute == null ? property.Name : nameAttribute.Name,
-                Width = widthAttribute == null ? 0 : widthAttribute.Width
+                Width = widthAttribute == null ? 0 : widthAttribute.Width,
+                CanSum = canSumAttribute == null ? false : canSumAttribute.CanSum,
             };
             ColumnsInfo.Add(columnInfo);
         }
     }
 
-    void ComposeTable(IContainer container)
+    protected void ComposeHeader(PageDescriptor page)
+    {
+        if (_multiPrintSettings.Header.Value == null)
+            return;
+        if (_multiPrintSettings.Header.Value is string headerValue)
+        {
+            if (string.IsNullOrEmpty(headerValue))
+                return;
+            page.Header().Column(column =>
+            {
+                var header = SetContainerSettings(column.Item(), _multiPrintSettings.Header.Settings);
+                header = header.Height(_multiPrintSettings.Header.Height);
+                if (_multiPrintSettings.Header.ShowOnce)
+                    header = header.ShowOnce();
+            });
+        }
+    }
+
+    protected void ComposeTable(IContainer container)
     {
         container.Table(table =>
         {
-            // step 1
             table.ColumnsDefinition(columns =>
             {
                 foreach (var columnInfo in ColumnsInfo)
@@ -82,7 +98,6 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
                 }
             });
 
-            // step 2
             table.Header(header =>
             {
                 foreach (var columnInfo in ColumnsInfo)
@@ -90,38 +105,74 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
                     header.Cell().Element(CellStyle).Text(columnInfo.DisplayName);
                 }
 
-                IContainer CellStyle(IContainer container)
+                IContainer CellStyle(IContainer cellContainer)
                 {
-                    container = container.DefaultTextStyle(x => x.SemiBold());
-                    if (_multiPrintSettings != null && _multiPrintSettings.Header != null)
-                    {
-                        container = container.PaddingBottom(_multiPrintSettings.Header.PaddingBottom ?? 0);
-                        container = container.PaddingLeft(_multiPrintSettings.Header.PaddingLeft ?? 0);
-                        container = container.PaddingRight(_multiPrintSettings.Header.PaddingRight ?? 0);
-                        container = container.PaddingTop(_multiPrintSettings.Header.PaddingTop ?? 0);
-                    }
-
-                    return container;
-                    //.PaddingBottom(_multiPrintSettings.Header.PaddingBottom)
-                    //.BorderBottom(1)
-                    //.BorderColor(Colors.Black);
+                    if (_multiPrintSettings is null || _multiPrintSettings.TableHeader is null)
+                        return cellContainer;
+                    return SetContainerSettings(cellContainer, _multiPrintSettings.TableHeader);
                 }
             });
 
-            // step 3
-            foreach (var item in Model.Items)
+            for (int i = 0; i < Models.Count(); i++)
             {
-                table.Cell().Element(CellStyle).Text(Model.Items.IndexOf(item) + 1);
-                table.Cell().Element(CellStyle).Text(item.Name);
-                table.Cell().Element(CellStyle).AlignRight().Text($"{item.Price}$");
-                table.Cell().Element(CellStyle).AlignRight().Text(item.Quantity);
-                table.Cell().Element(CellStyle).AlignRight().Text($"{item.Price * item.Quantity}$");
-
-                static IContainer CellStyle(IContainer container)
+                foreach (var columnInfo in ColumnsInfo)
                 {
-                    return container.BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingVertical(5);
+                    if (ValueByColumnNameByRowIndex.TryGetValue(i, out var valueByColumnName) && valueByColumnName.TryGetValue(columnInfo.Name, out var value))
+                    {
+                        value ??= Activator.CreateInstance(columnInfo.Type!);
+                        table.Cell().Element(CellStyle).Text(value!.ToString());
+                    }
+                }
+
+                IContainer CellStyle(IContainer cellContainer)
+                {
+                    if (_multiPrintSettings is null || _multiPrintSettings.TableContent is null)
+                        return cellContainer;
+                    return SetContainerSettings(cellContainer, _multiPrintSettings.TableContent);
                 }
             }
         });
+    }
+
+    protected void ComposeFooter(PageDescriptor page)
+    {
+        if (_multiPrintSettings.Footer.Value == null)
+            return;
+        if (_multiPrintSettings.Footer.Value is string headerValue)
+        {
+            if (string.IsNullOrEmpty(headerValue))
+                return;
+            page.Header().Column(column =>
+            {
+                var header = SetContainerSettings(column.Item(), _multiPrintSettings.Header.Settings);
+                if (_multiPrintSettings.Header.ShowOnce)
+                    header = header.ShowOnce();
+            });
+        }
+    }
+
+    private static IContainer SetContainerSettings(IContainer container, CellSettings settings)
+    {
+        container = container.DefaultTextStyle(c => settings.TextStyle ?? TextStyle.Default)
+            .PaddingBottom(settings.PaddingBottom ?? 0)
+            .PaddingLeft(settings.PaddingLeft ?? 0)
+            .PaddingRight(settings.PaddingRight ?? 0)
+            .PaddingTop(settings.PaddingTop ?? 0)
+            .BorderBottom(settings.BorderBottom ?? 0)
+            .BorderLeft(settings.BorderLeft ?? 0)
+            .BorderRight(settings.BorderRight ?? 0)
+            .BorderTop(settings.BorderTop ?? 0)
+            .Background(string.IsNullOrEmpty(settings.Background) ? "#fff" : settings.Background)
+            .BorderColor(string.IsNullOrEmpty(settings.BorderColor) ? "#000" : settings.BorderColor);
+
+        container = settings.Align switch
+        {
+            CellSettings.AlignType.Top => container.AlignTop(),
+            CellSettings.AlignType.Left => container.AlignLeft(),
+            CellSettings.AlignType.Right => container.AlignRight(),
+            CellSettings.AlignType.Bottom => container.AlignBottom(),
+            _ => container.AlignCenter(),
+        };
+        return container;
     }
 }
