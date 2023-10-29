@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiPrint", "MultiPrint\MultiPrint.csproj", "{71C27115-FEDE-48A3-93BB-64F85D20B270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintEnumerablesExample", "PrintEnumerablesExample\PrintEnumerablesExample.csproj", "{F821F1A8-72B5-44DD-8084-6775502948FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71C27115-FEDE-48A3-93BB-64F85D20B270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C27115-FEDE-48A3-93BB-64F85D20B270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C27115-FEDE-48A3-93BB-64F85D20B270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C27115-FEDE-48A3-93BB-64F85D20B270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F821F1A8-72B5-44DD-8084-6775502948FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F821F1A8-72B5-44DD-8084-6775502948FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F821F1A8-72B5-44DD-8084-6775502948FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F821F1A8-72B5-44DD-8084-6775502948FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
