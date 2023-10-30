@@ -8,6 +8,7 @@ var accounts = InvoiceDocumentDataSource.GetAccounts();
 
 var settings = new MultiPrintPageSettings
 {
+    RightRoLeft = true,
     Header = new HeaderSettings
     {
         Value = "علاوي الغالي"

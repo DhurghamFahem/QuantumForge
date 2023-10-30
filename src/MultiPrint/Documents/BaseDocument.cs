@@ -55,6 +55,7 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
             var nameAttribute = (MultiPrintNameAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintNameAttribute))!;
             var widthAttribute = (MultiPrintWidthAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintWidthAttribute))!;
             var canSumAttribute = (MultiPrintCanSumAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintCanSumAttribute))!;
+            var summationTextAttribute = (MultiPrintSummationTextAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintSummationTextAttribute))!;
 
             var columnInfo = new ColumnInfo
             {
@@ -63,6 +64,8 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
                 DisplayName = nameAttribute == null ? property.Name : nameAttribute.Name,
                 Width = widthAttribute == null ? 0 : widthAttribute.Width,
                 CanSum = canSumAttribute != null,
+                SummationText = summationTextAttribute == null ? "" : summationTextAttribute.SummationText,
+                ReverseSummationText = summationTextAttribute == null ? false : summationTextAttribute.Reverse,
             };
             ColumnsInfo.Add(columnInfo);
         }
@@ -117,6 +120,7 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
                 }
             });
 
+            var summationByColumnName = new Dictionary<string, decimal>();
             for (int i = 0; i < Models.Count(); i++)
             {
                 foreach (var columnInfo in ColumnsInfo)
@@ -125,6 +129,13 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
                     {
                         value ??= Activator.CreateInstance(columnInfo.Type!);
                         table.Cell().Element(CellStyle).Text(value!.ToString());
+                        if (columnInfo.CanSum)
+                        {
+                            if (summationByColumnName.ContainsKey(columnInfo.Name) == false)
+                                summationByColumnName[columnInfo.Name] = 0m;
+                            if (decimal.TryParse(value?.ToString(), out var sum))
+                                summationByColumnName[columnInfo.Name] += sum;
+                        }
                     }
                 }
 
@@ -134,6 +145,39 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
                         return cellContainer;
                     return SetContainerSettings(cellContainer, _multiPrintSettings.TableContent);
                 }
+            }
+
+            if (summationByColumnName.Count != 0)
+            {
+                table.Footer(footer =>
+                {
+                    foreach (var columnInfo in ColumnsInfo)
+                    {
+                        if (columnInfo.CanSum && summationByColumnName.TryGetValue(columnInfo.Name, out var sum))
+                        {
+                            if (string.IsNullOrEmpty(columnInfo.SummationText))
+                                footer.Cell().Element(CellStyle).Text(sum.ToString());
+                            else if (columnInfo.ReverseSummationText)
+                            {
+                                var charArray = sum.ToString().ToCharArray();
+                                Array.Reverse(charArray);
+                                var reversedString = new string(charArray);
+                                footer.Cell().Element(CellStyle).Text($"{columnInfo.SummationText} : {reversedString}");
+                            }
+                            else
+                                footer.Cell().Element(CellStyle).Text($"{columnInfo.SummationText} : {sum}");
+                        }
+                        else
+                            footer.Cell().Element(CellStyle).Text("");
+                    }
+
+                    IContainer CellStyle(IContainer cellContainer)
+                    {
+                        if (_multiPrintSettings is null || _multiPrintSettings.TableFooter is null)
+                            return cellContainer;
+                        return SetContainerSettings(cellContainer, _multiPrintSettings.TableFooter);
+                    }
+                });
             }
         });
     }

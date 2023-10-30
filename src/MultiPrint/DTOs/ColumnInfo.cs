@@ -7,4 +7,6 @@ public class ColumnInfo
     public Type? Type { get; set; }
     public float Width { get; set; }
     public bool CanSum { get; set; }
+    public string SummationText { get; set; } = "";
+    public bool ReverseSummationText { get; set; }
 }

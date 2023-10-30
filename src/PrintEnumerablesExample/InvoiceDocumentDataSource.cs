@@ -12,6 +12,7 @@ public class AccountModel
     public string Phone { get; set; } = "";
     public DateTime Birthdate { get; set; }
     [MultiPrintCanSum]
+    [MultiPrintSummationText("الرصيد", true)]
     public decimal Balance { get; set; }
     [MultiPrintIgnore]
     public bool Active { get; set; }
