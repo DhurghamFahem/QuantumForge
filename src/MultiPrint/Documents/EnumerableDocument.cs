@@ -18,6 +18,9 @@ public class EnumerableDocument<TModel> : BaseDocument<TModel>, IDocument where 
         GenerateColumnsAndValues();
         ducoment.Page(page =>
         {
+            if (_multiPrintSettings.RightRoLeft)
+                page.ContentFromRightToLeft();
+            else page.ContentFromLeftToRight();
             page.DefaultTextStyle(c => c.FontFamily(_multiPrintSettings.FontFamily));
             if (_multiPrintSettings.IsContinuous)
                 page.ContinuousSize(_multiPrintSettings.Width, _multiPrintSettings.Unit);
