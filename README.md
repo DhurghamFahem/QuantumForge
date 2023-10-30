@@ -12,7 +12,7 @@ MultiPrint is a versatile C# utility for printing enumerables and data grids dir
 
 To use MultiPrint in your C# application, you can choose one of the following methods:
 
-### 1. NuGet Package (Recommended)
+### NuGet Package
 
 You can install the MultiPrint library via [NuGet](https://www.nuget.org/).
 
