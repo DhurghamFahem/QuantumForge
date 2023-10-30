@@ -49,6 +49,9 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
     {
         foreach (var property in properties)
         {
+            var ignoreAttribute = (MultiPrintIgnore)Attribute.GetCustomAttribute(property, typeof(MultiPrintIgnore))!;
+            if (ignoreAttribute != null)
+                continue;
             var nameAttribute = (MultiPrintNameAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintNameAttribute))!;
             var widthAttribute = (MultiPrintWidthAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintWidthAttribute))!;
             var canSumAttribute = (MultiPrintCanSumAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintCanSumAttribute))!;

@@ -1,5 +1,6 @@
 ﻿namespace MultiPrint.Attributes;
 
-public class MultiPrintIgnore
+[AttributeUsage(AttributeTargets.All)]
+public class MultiPrintIgnore : Attribute
 {
 }

@@ -13,6 +13,7 @@ public class AccountModel
     public DateTime Birthdate { get; set; }
     [MultiPrintCanSum]
     public decimal Balance { get; set; }
+    [MultiPrintIgnore]
     public bool Active { get; set; }
 }
 

@@ -3,7 +3,4 @@
 [AttributeUsage(AttributeTargets.All)]
 public class MultiPrintCanSumAttribute : Attribute
 {
-    public MultiPrintCanSumAttribute()
-    {
-    }
 }
