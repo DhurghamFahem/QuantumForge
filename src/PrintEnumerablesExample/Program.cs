@@ -15,4 +15,7 @@ var settings = new MultiPrintPageSettings
 };
 
 var accountsDocument = new EnumerableDocument<AccountModel>(accounts, settings);
+using var stream = new MemoryStream();
+accountsDocument.GeneratePdf(stream);
+stream.Seek(0, SeekOrigin.Begin);
 accountsDocument.ShowInPreviewer();

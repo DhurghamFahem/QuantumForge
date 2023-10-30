@@ -59,7 +59,7 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
                 Name = property.Name,
                 DisplayName = nameAttribute == null ? property.Name : nameAttribute.Name,
                 Width = widthAttribute == null ? 0 : widthAttribute.Width,
-                CanSum = canSumAttribute == null ? false : canSumAttribute.CanSum,
+                CanSum = canSumAttribute != null,
             };
             ColumnsInfo.Add(columnInfo);
         }
@@ -79,6 +79,7 @@ public abstract class BaseDocument<TModel> where TModel : class, new()
                 header = header.Height(_multiPrintSettings.Header.Height);
                 if (_multiPrintSettings.Header.ShowOnce)
                     header = header.ShowOnce();
+                header.Text(headerValue);
             });
         }
     }

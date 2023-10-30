@@ -1,11 +1,17 @@
-﻿namespace PrintEnumerablesExample;
+﻿using MultiPrint.Attributes;
+
+namespace PrintEnumerablesExample;
 
 public class AccountModel
 {
+    [MultiPrintName("رقم الحساب")]
     public int Id { get; set; }
+    [MultiPrintName("رقم الحساب")]
+    [MultiPrintWidth(200)]
     public string Name { get; set; } = "";
     public string Phone { get; set; } = "";
     public DateTime Birthdate { get; set; }
+    [MultiPrintCanSum]
     public decimal Balance { get; set; }
     public bool Active { get; set; }
 }

@@ -9,6 +9,7 @@ public class MultiPrintPageSettings
     public float Height { get; set; } = PageSizes.A4.Height;
     public Unit Unit { get; set; } = Unit.Point;
     public bool IsContinuous { get; set; }
+    public string FontFamily { get; set; } = "Cairo";
     public CellSettings TableHeader { get; set; } = GetDefaultTableHeaderSettings();
     public CellSettings TableContent { get; set; } = GetDefaultTableContentSettings();
     public CellSettings TableFooter { get; set; } = GetDefaultTableFooterSettings();

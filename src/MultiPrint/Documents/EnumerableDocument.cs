@@ -18,6 +18,7 @@ public class EnumerableDocument<TModel> : BaseDocument<TModel>, IDocument where 
         GenerateColumnsAndValues();
         ducoment.Page(page =>
         {
+            page.DefaultTextStyle(c => c.FontFamily(_multiPrintSettings.FontFamily));
             if (_multiPrintSettings.IsContinuous)
                 page.ContinuousSize(_multiPrintSettings.Width, _multiPrintSettings.Unit);
             else
