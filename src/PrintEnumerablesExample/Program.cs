@@ -1,7 +1,6 @@
 ﻿using MultiPrint.Documents;
 using MultiPrint.Settings;
 using PrintEnumerablesExample;
-using QuestPDF.Fluent;
 using QuestPDF.Previewer;
 
 var accounts = InvoiceDocumentDataSource.GetAccounts();
@@ -11,7 +10,11 @@ var settings = new MultiPrintPageSettings
     RightRoLeft = true,
     Header = new HeaderSettings
     {
-        Value = "علاوي الغالي"
+        Value = "شركة اليقين للبيع بالتجزئة"
+    },
+    TableFooter = new CellSettings
+    {
+        Background = "5d5555"
     }
 };
 
