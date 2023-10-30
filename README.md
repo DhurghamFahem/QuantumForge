@@ -18,6 +18,7 @@ You can install the MultiPrint library via [NuGet](https://www.nuget.org/).
 
 ```bash
 dotnet add package MultiPrint
+```
 
 ## Usage
 
