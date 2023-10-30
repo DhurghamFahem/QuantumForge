@@ -32,6 +32,7 @@ To print an enumerable collection, you can use the `EnumerableDocument` class. H
 using MultiPrint.Documents;
 using MultiPrint.Settings;
 using PrintEnumerablesExample;
+using QuestPDF.Fluent;
 
 var accounts = InvoiceDocumentDataSource.GetAccounts();
 
