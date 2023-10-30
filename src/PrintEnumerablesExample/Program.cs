@@ -1,7 +1,7 @@
 ﻿using MultiPrint.Documents;
 using MultiPrint.Settings;
 using PrintEnumerablesExample;
-using QuestPDF.Previewer;
+using QuestPDF.Fluent;
 
 var accounts = InvoiceDocumentDataSource.GetAccounts();
 
@@ -10,7 +10,7 @@ var settings = new MultiPrintPageSettings
     RightRoLeft = true,
     Header = new HeaderSettings
     {
-        Value = "شركة اليقين للبيع بالتجزئة"
+        Value = "Test Company"
     },
     TableFooter = new CellSettings
     {
@@ -19,5 +19,4 @@ var settings = new MultiPrintPageSettings
 };
 
 var accountsDocument = new EnumerableDocument<AccountModel>(accounts, settings);
-using var stream = new MemoryStream();
-accountsDocument.ShowInPreviewer();
+accountsDocument.GeneratePdf();
