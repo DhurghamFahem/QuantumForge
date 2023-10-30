@@ -26,7 +26,7 @@ MultiPrint makes it easy to print enumerables and data grids in a user-friendly 
 
 ### Printing Enumerables
 
-To print an enumerable collection, you can use the `EnumerablePrinter` class. Here's an example of printing a list of strings:
+To print an enumerable collection, you can use the `EnumerableDocument` class. Here's an example of printing a list of accounts:
 
 ```csharp
 using MultiPrint.Documents;
