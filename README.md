@@ -26,29 +26,25 @@ MultiPrint makes it easy to print enumerables and data grids in a user-friendly 
 
 ### Printing Enumerables
 
-To print an enumerable collection, you can use the `EnumerableDocument` class. Here's an example of printing a list of accounts:
+To print an enumerable collection, you can use the `MultiPrintService` class. Here's an example of printing a list of accounts:
 
 ```csharp
-using MultiPrint.Documents;
-using MultiPrint.Settings;
+using MultiPrint.Services;
 using PrintEnumerablesExample;
-using QuestPDF.Fluent;
 
 var accounts = InvoiceDocumentDataSource.GetAccounts();
+MultiPrintService.GeneratePdf(accounts);
+```
 
-var settings = new MultiPrintPageSettings
-{
-    RightRoLeft = true,
-    Header = new HeaderSettings
-    {
-        Value = "Test Company"
-    },
-    TableFooter = new CellSettings
-    {
-        Background = "5d5555"
-    }
-};
+To print a DataGrid content, you can use the `MultiPrintService` class. Here's an example of printing a DataGrid content:
 
-var accountsDocument = new EnumerableDocument<AccountModel>(accounts, settings);
-accountsDocument.GeneratePdf();
+```csharp
+using MultiPrint.Services;
+using PrintEnumerablesExample;
+
+var accounts = InvoiceDocumentDataSource.GetAccounts();
+MultiPrintService.GeneratePdf(accounts);
+```
+
+You can easily tailor the printing output to meet their specific needs by adjusting various settings within the MultiPrint package. To control the appearance of your printed content, you can customize header and footer content, allowing you to include additional information or branding elements. Furthermore, you have the flexibility to set the width and height of the printed pages to match your preferred paper size or layout. You can adjust table settings, such as column alignment, column widths, and cell formatting, to ensure the printed data grid reflects your desired presentation. This level of customization empowers you to create professional and tailored printouts that seamlessly integrate with your application's style and requirements.
 
