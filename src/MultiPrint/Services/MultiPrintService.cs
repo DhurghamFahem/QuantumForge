@@ -1,20 +1,86 @@
-﻿using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using QuestPDF.Previewer;
+﻿using MultiPrint.Documents;
+using MultiPrint.Settings;
+using QuestPDF.Fluent;
 
 namespace MultiPrint.Services;
 
 public class MultiPrintService
 {
-    private readonly IDocument _document;
-    public MultiPrintService(IDocument document)
+    public static void GeneratePdf<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
-        _document = document;
-        _document.ShowInPreviewer();
+        var accountsDocument = new EnumerableDocument<TModel>(enumerable, settings);
+        accountsDocument.GeneratePdf();
     }
 
-    public void Print<T>(IEnumerable<T> enumerable) where T : class
+    public static void GeneratePdf<TModel>(IEnumerable<TModel> enumerable, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
+        var accountsDocument = new EnumerableDocument<TModel>(enumerable, settings);
+        accountsDocument.GeneratePdf(stream);
+    }
 
+    public static void GeneratePdf<TModel>(IEnumerable<TModel> enumerable, string filePath, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        var accountsDocument = new EnumerableDocument<TModel>(enumerable, settings);
+        accountsDocument.GeneratePdf(filePath);
+    }
+
+    public static void GeneratePdf<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        if (dataSource is IEnumerable<TModel> enumerable == false)
+            return;
+        GeneratePdf(enumerable, settings);
+    }
+
+    public static void GeneratePdf<TModel>(object dataSource, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        if (dataSource is IEnumerable<TModel> enumerable == false)
+            return;
+        GeneratePdf(enumerable, stream, settings);
+    }
+
+    public static void GeneratePdf<TModel>(object dataSource, string filePath, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        if (dataSource is IEnumerable<TModel> enumerable == false)
+            return;
+        GeneratePdf(enumerable, filePath, settings);
+    }
+
+    public static void GenerateXps<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        var accountsDocument = new EnumerableDocument<TModel>(enumerable, settings);
+        accountsDocument.GenerateXps();
+    }
+
+    public static void GenerateXps<TModel>(IEnumerable<TModel> enumerable, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        var accountsDocument = new EnumerableDocument<TModel>(enumerable, settings);
+        accountsDocument.GenerateXps(stream);
+    }
+
+    public static void GenerateXps<TModel>(IEnumerable<TModel> enumerable, string filePath, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        var accountsDocument = new EnumerableDocument<TModel>(enumerable, settings);
+        accountsDocument.GenerateXps(filePath);
+    }
+
+    public static void GenerateXps<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        if (dataSource is IEnumerable<TModel> enumerable == false)
+            return;
+        GenerateXps(enumerable, settings);
+    }
+
+    public static void GenerateXps<TModel>(object dataSource, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        if (dataSource is IEnumerable<TModel> enumerable == false)
+            return;
+        GenerateXps(enumerable, stream, settings);
+    }
+
+    public static void GenerateXps<TModel>(object dataSource, string filePath, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        if (dataSource is IEnumerable<TModel> enumerable == false)
+            return;
+        GenerateXps(enumerable, filePath, settings);
     }
 }

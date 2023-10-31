@@ -18,7 +18,7 @@ public class AccountModel
     public bool Active { get; set; }
 }
 
-public class InvoiceDocumentDataSource
+public class InvoiceDataSource
 {
     public static List<AccountModel> GetAccounts()
     {

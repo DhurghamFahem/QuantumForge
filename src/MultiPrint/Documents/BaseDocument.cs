@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace MultiPrint.Documents;
 
-public abstract class BaseDocument<TModel> where TModel : class, new()
+internal abstract class BaseDocument<TModel> where TModel : class, new()
 {
     protected Dictionary<int, Dictionary<string, object?>> ValueByColumnNameByRowIndex = [];
     protected List<ColumnInfo> ColumnsInfo = [];

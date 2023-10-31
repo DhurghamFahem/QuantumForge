@@ -4,7 +4,7 @@ using QuestPDF.Infrastructure;
 
 namespace MultiPrint.Documents;
 
-public class EnumerableDocument<TModel> : BaseDocument<TModel>, IDocument where TModel : class, new()
+internal class EnumerableDocument<TModel> : BaseDocument<TModel>, IDocument where TModel : class, new()
 {
     private readonly MultiPrintPageSettings _multiPrintSettings;
     public EnumerableDocument(IEnumerable<TModel> models, MultiPrintPageSettings? multiPrintSettings = null)
