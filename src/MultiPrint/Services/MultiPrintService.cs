@@ -1,6 +1,7 @@
 ﻿using MultiPrint.Documents;
 using MultiPrint.Settings;
 using QuestPDF.Fluent;
+using QuestPDF.Previewer;
 
 namespace MultiPrint.Services;
 

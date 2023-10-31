@@ -186,15 +186,14 @@ internal abstract class BaseDocument<TModel> where TModel : class, new()
     {
         if (_multiPrintSettings.Footer.Value == null)
             return;
-        if (_multiPrintSettings.Footer.Value is string headerValue)
+        if (_multiPrintSettings.Footer.Value is string footerValue)
         {
-            if (string.IsNullOrEmpty(headerValue))
+            if (string.IsNullOrEmpty(footerValue))
                 return;
-            page.Header().Column(column =>
+            page.Footer().Column(column =>
             {
-                var header = SetContainerSettings(column.Item(), _multiPrintSettings.Header.Settings);
-                if (_multiPrintSettings.Header.ShowOnce)
-                    header = header.ShowOnce();
+                var footer = SetContainerSettings(column.Item(), _multiPrintSettings.Footer.Settings);
+                footer.Text(footerValue);
             });
         }
     }

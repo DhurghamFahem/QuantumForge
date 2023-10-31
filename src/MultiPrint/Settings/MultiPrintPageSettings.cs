@@ -11,6 +11,7 @@ public class MultiPrintPageSettings
     public bool IsContinuous { get; set; }
     public bool RightRoLeft { get; set; }
     public string FontFamily { get; set; } = "Cairo";
+    public string Background { get; set; } = "#FFFFFF";
     public CellSettings TableHeader { get; set; } = GetDefaultTableHeaderSettings();
     public CellSettings TableContent { get; set; } = GetDefaultTableContentSettings();
     public CellSettings TableFooter { get; set; } = GetDefaultTableFooterSettings();

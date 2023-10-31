@@ -6,7 +6,7 @@ public class FooterSettings
 {
     public object? Value { get; set; }
     public bool ShowPageNumber { get; set; }
-    public CellSettings? Settings { get; set; } = GetDefaultSettings();
+    public CellSettings Settings { get; set; } = GetDefaultSettings();
     public static CellSettings GetDefaultSettings()
     {
         return new CellSettings

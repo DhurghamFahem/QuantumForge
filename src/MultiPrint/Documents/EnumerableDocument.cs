@@ -22,12 +22,15 @@ internal class EnumerableDocument<TModel> : BaseDocument<TModel>, IDocument wher
                 page.ContentFromRightToLeft();
             else page.ContentFromLeftToRight();
             page.DefaultTextStyle(c => c.FontFamily(_multiPrintSettings.FontFamily));
+            page.PageColor(_multiPrintSettings.Background);
+
             if (_multiPrintSettings.IsContinuous)
                 page.ContinuousSize(_multiPrintSettings.Width, _multiPrintSettings.Unit);
             else
                 page.Size(_multiPrintSettings.Width, _multiPrintSettings.Height, _multiPrintSettings.Unit);
             ComposeHeader(page);
             ComposeTable(page.Content());
+            ComposeFooter(page);
         });
     }
 }
