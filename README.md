@@ -32,7 +32,7 @@ To print an enumerable collection, you can use the `MultiPrintService` class. He
 using MultiPrint.Services;
 using PrintEnumerablesExample;
 
-var accounts = InvoiceDocumentDataSource.GetAccounts();
+var accounts = InvoiceDataSource.GetAccounts();
 MultiPrintService.GeneratePdf(accounts);
 ```
 
@@ -42,9 +42,48 @@ To print a DataGrid content, you can use the `MultiPrintService` class. Here's a
 using MultiPrint.Services;
 using PrintEnumerablesExample;
 
-var accounts = InvoiceDocumentDataSource.GetAccounts();
+var accounts = InvoiceDataSource.GetAccounts();
 MultiPrintService.GeneratePdf(accounts);
 ```
 
 You can easily tailor the printing output to meet their specific needs by adjusting various settings within the MultiPrint package. To control the appearance of your printed content, you can customize header and footer content, allowing you to include additional information or branding elements. Furthermore, you have the flexibility to set the width and height of the printed pages to match your preferred paper size or layout. You can adjust table settings, such as column alignment, column widths, and cell formatting, to ensure the printed data grid reflects your desired presentation. This level of customization empowers you to create professional and tailored printouts that seamlessly integrate with your application's style and requirements.
+
+```csharp
+using MultiPrint.Services;
+using MultiPrint.Settings;
+using PrintEnumerablesExample;
+using QuestPDF.Fluent;
+using QuestPDF.Infrastructure;
+
+var accounts = InvoiceDataSource.GetAccounts();
+
+var settings = new MultiPrintPageSettings();
+
+settings.Background = "#739072";
+
+settings.Header.Value = "Test company header";
+settings.Header.Settings = new();
+settings.Header.Settings.Background = "#3A4D39";
+settings.Header.Settings.TextStyle = TextStyle.Default.FontColor("#ECE3CE")
+                                                      .FontSize(18);
+settings.Header.Height = 50;
+
+settings.TableHeader = new();
+settings.TableHeader.Background = "#4F6F52";
+settings.TableHeader.TextStyle = TextStyle.Default.FontColor("#ECE3CE")
+                                                  .FontSize(14);
+
+settings.TableContent.Background = "#739072";
+settings.TableContent.TextStyle = TextStyle.Default.FontColor("#ECE3CE");
+
+settings.TableFooter.Background = "#739072";
+settings.TableFooter.TextStyle = TextStyle.Default.FontColor("#ECE3CE");
+
+settings.Footer.Value = "Test company footer";
+settings.Footer.Settings = new();
+settings.Footer.Settings.Background = "#3A4D39";
+settings.Footer.Settings.TextStyle = TextStyle.Default.FontColor("#ECE3CE")
+                                                      .FontSize(10);
+MultiPrintService.GeneratePdf(accounts, settings);
+```
 
