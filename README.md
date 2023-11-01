@@ -41,8 +41,7 @@ To print a DataGridView content, you can use the `MultiPrintService` class. Here
 ```csharp
 using MultiPrint.Services;
 
-var accounts = InvoiceDataSource.GetAccounts();
-MultiPrintService.GeneratePdf(accounts);
+MultiPrintService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
 ```
 
 ### Printing WPF DataGrid
@@ -51,7 +50,6 @@ To print a DataGrid content, you can use the `MultiPrintService` class. Here's a
 
 ```csharp
 using MultiPrint.Services;
-namespace PrintWinFormsDataGridViewExample;
 
 MultiPrintService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
 ```
