@@ -30,7 +30,6 @@ To print an enumerable collection, you can use the `MultiPrintService` class. He
 
 ```csharp
 using MultiPrint.Services;
-using PrintEnumerablesExample;
 
 var accounts = InvoiceDataSource.GetAccounts();
 MultiPrintService.GeneratePdf(accounts);
@@ -41,7 +40,6 @@ To print a DataGridView content, you can use the `MultiPrintService` class. Here
 
 ```csharp
 using MultiPrint.Services;
-using PrintEnumerablesExample;
 
 var accounts = InvoiceDataSource.GetAccounts();
 MultiPrintService.GeneratePdf(accounts);
