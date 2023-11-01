@@ -2,6 +2,7 @@
 using MultiPrint.Settings;
 using QuestPDF.Fluent;
 using QuestPDF.Previewer;
+using System.Diagnostics;
 
 namespace MultiPrint.Services;
 
@@ -83,5 +84,26 @@ public class MultiPrintService
         if (dataSource is IEnumerable<TModel> enumerable == false)
             return;
         GenerateXps(enumerable, filePath, settings);
+    }
+
+    public static void Print<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        var folderPath = Path.GetTempPath();
+        var filePath = Path.Combine($"{Guid.NewGuid()}.pdf");
+        GeneratePdf(enumerable, filePath, settings);
+        if (File.Exists(filePath) == false)
+            throw new Exception("File creation failed.");
+        Print(filePath);
+    }
+
+    public static void Print<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        if (dataSource is IEnumerable<TModel> enumerable == false)
+            return;
+        Print(enumerable, settings);
+    }
+
+    private static void Print(string filePath)
+    {
     }
 }
