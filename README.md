@@ -35,6 +35,19 @@ using PrintEnumerablesExample;
 var accounts = InvoiceDataSource.GetAccounts();
 MultiPrintService.GeneratePdf(accounts);
 ```
+### Printing WinForms DataGridView
+
+To print a DataGridView content, you can use the `MultiPrintService` class. Here's an example of printing a DataGridView content:
+
+```csharp
+using MultiPrint.Services;
+using PrintEnumerablesExample;
+
+var accounts = InvoiceDataSource.GetAccounts();
+MultiPrintService.GeneratePdf(accounts);
+```
+
+### Printing WPF DataGrid
 
 To print a DataGrid content, you can use the `MultiPrintService` class. Here's an example of printing a DataGrid content:
 
