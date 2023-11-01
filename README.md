@@ -53,10 +53,9 @@ To print a DataGrid content, you can use the `MultiPrintService` class. Here's a
 
 ```csharp
 using MultiPrint.Services;
-using PrintEnumerablesExample;
+namespace PrintWinFormsDataGridViewExample;
 
-var accounts = InvoiceDataSource.GetAccounts();
-MultiPrintService.GeneratePdf(accounts);
+MultiPrintService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
 ```
 
 You can easily tailor the printing output to meet their specific needs by adjusting various settings within the MultiPrint package. To control the appearance of your printed content, you can customize header and footer content, allowing you to include additional information or branding elements. Furthermore, you have the flexibility to set the width and height of the printed pages to match your preferred paper size or layout. You can adjust table settings, such as column alignment, column widths, and cell formatting, to ensure the printed data grid reflects your desired presentation. This level of customization empowers you to create professional and tailored printouts that seamlessly integrate with your application's style and requirements.
