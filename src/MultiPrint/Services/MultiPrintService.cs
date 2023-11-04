@@ -1,8 +1,7 @@
 ﻿using MultiPrint.Documents;
 using MultiPrint.Settings;
 using QuestPDF.Fluent;
-using QuestPDF.Previewer;
-using System.Diagnostics;
+using System.ComponentModel;
 
 namespace MultiPrint.Services;
 
@@ -29,21 +28,21 @@ public class MultiPrintService
     public static void GeneratePdf<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
-            return;
+            throw new InvalidEnumArgumentException("Cannot generate pdf from non Enumerable data source.");
         GeneratePdf(enumerable, settings);
     }
 
     public static void GeneratePdf<TModel>(object dataSource, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
-            return;
+            throw new InvalidEnumArgumentException("Cannot generate pdf from non Enumerable data source.");
         GeneratePdf(enumerable, stream, settings);
     }
 
     public static void GeneratePdf<TModel>(object dataSource, string filePath, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
-            return;
+            throw new InvalidEnumArgumentException("Cannot generate pdf from non Enumerable data source.");
         GeneratePdf(enumerable, filePath, settings);
     }
 
@@ -68,42 +67,43 @@ public class MultiPrintService
     public static void GenerateXps<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
-            return;
+            throw new InvalidEnumArgumentException("Cannot generate xps from non Enumerable data source.");
         GenerateXps(enumerable, settings);
     }
 
     public static void GenerateXps<TModel>(object dataSource, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
-            return;
+            throw new InvalidEnumArgumentException("Cannot generate xps from non Enumerable data source.");
         GenerateXps(enumerable, stream, settings);
     }
 
     public static void GenerateXps<TModel>(object dataSource, string filePath, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
-            return;
+            throw new InvalidEnumArgumentException("Cannot generate xps from non Enumerable data source.");
         GenerateXps(enumerable, filePath, settings);
     }
 
-    public static void Print<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    public static void Print<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null, string printerName = "") where TModel : class, new()
     {
         var folderPath = Path.GetTempPath();
-        var filePath = Path.Combine($"{Guid.NewGuid()}.pdf");
+        var filePath = Path.Combine(folderPath, $"{Guid.NewGuid()}.pdf");
         GeneratePdf(enumerable, filePath, settings);
         if (File.Exists(filePath) == false)
             throw new Exception("File creation failed.");
-        Print(filePath);
+        Print(filePath, printerName);
     }
 
-    public static void Print<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    public static void Print<TModel>(object dataSource, MultiPrintPageSettings? settings = null, string printerName = "") where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
-            return;
-        Print(enumerable, settings);
+            throw new InvalidEnumArgumentException("Cannot print non Enumerable data source.");
+        Print(enumerable, settings, printerName);
     }
 
-    private static void Print(string filePath)
+    private static void Print(string filePath, string printerName)
     {
+        var pd = new printdialog
     }
 }
