@@ -1,13 +1,5 @@
-﻿using System.Text;
+﻿using MultiPrint.Services;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PrintWpfAppDataGridExample
 {
@@ -21,9 +13,25 @@ namespace PrintWpfAppDataGridExample
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var accounts = InvoiceDataSource.GetAccounts();
+            dataGrid.ItemsSource = accounts;
+        }
+
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
+            MultiPrintService.Print<AccountModel>(dataGrid.ItemsSource);
+        }
 
+        private void btnGeneratePdf_Click(object sender, RoutedEventArgs e)
+        {
+            MultiPrintService.GeneratePdf<AccountModel>(dataGrid.ItemsSource);
+        }
+
+        private void btnGenerateXbs_Click(object sender, RoutedEventArgs e)
+        {
+            MultiPrintService.GenerateXps<AccountModel>(dataGrid.ItemsSource);
         }
     }
 }
