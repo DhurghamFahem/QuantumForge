@@ -10,8 +10,8 @@ public class MultiPrintNameAttribute : Attribute
     {
     }
 
-    public MultiPrintNameAttribute(string description)
+    public MultiPrintNameAttribute(string name)
     {
-        NameValue = description;
+        NameValue = name;
     }
 }
