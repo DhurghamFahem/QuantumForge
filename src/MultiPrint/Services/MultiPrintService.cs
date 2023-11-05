@@ -2,6 +2,7 @@
 using MultiPrint.Settings;
 using QuestPDF.Fluent;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace MultiPrint.Services;
 
@@ -104,6 +105,29 @@ public class MultiPrintService
 
     private static void Print(string filePath, string printerName)
     {
-        var pd = new printdialog
+        var info = new ProcessStartInfo
+        {
+            Verb = "print",
+            FileName = filePath,
+            CreateNoWindow = true,
+            WindowStyle = ProcessWindowStyle.Hidden,
+            WorkingDirectory = Path.GetTempPath(),
+            UseShellExecute = true
+        };
+        var p = new Process
+        {
+            StartInfo = info
+        };
+        p.Start();
+
+        long ticks = -1;
+        while (ticks != p.TotalProcessorTime.Ticks)
+        {
+            ticks = p.TotalProcessorTime.Ticks;
+            Thread.Sleep(1000);
+        }
+
+        if (false == p.CloseMainWindow())
+            p.Kill();
     }
 }
