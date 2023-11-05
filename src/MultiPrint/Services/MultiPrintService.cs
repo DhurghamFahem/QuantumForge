@@ -129,5 +129,6 @@ public class MultiPrintService
 
         if (false == p.CloseMainWindow())
             p.Kill();
+        File.Delete(filePath);
     }
 }
