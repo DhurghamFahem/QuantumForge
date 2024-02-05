@@ -33,4 +33,4 @@ settings.Footer.Settings = new();
 settings.Footer.Settings.Background = "#3A4D39";
 settings.Footer.Settings.TextStyle = TextStyle.Default.FontColor("#ECE3CE")
                                                       .FontSize(10);
-MultiPrintService.GeneratePdf(accounts, settings);
+MultiPrintService.GeneratePdfAndShow<AccountModel>(accounts, settings);
