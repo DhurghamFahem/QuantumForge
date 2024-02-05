@@ -17,11 +17,11 @@ public partial class Form1 : Form
 
     private void btnGeneratePdf_Click(object sender, EventArgs e)
     {
-        MultiPrintService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
+        QuantumForgeService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
     }
 
     private void btnGenerateXbs_Click(object sender, EventArgs e)
     {
-        MultiPrintService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
+        QuantumForgeService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
     }
 }

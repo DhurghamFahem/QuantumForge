@@ -22,12 +22,12 @@ namespace PrintWpfAppDataGridExample
 
         private void btnGeneratePdf_Click(object sender, RoutedEventArgs e)
         {
-            MultiPrintService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
+            QuantumForgeService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
         }
 
         private void btnGenerateXbs_Click(object sender, RoutedEventArgs e)
         {
-            MultiPrintService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
+            QuantumForgeService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
         }
     }
 }

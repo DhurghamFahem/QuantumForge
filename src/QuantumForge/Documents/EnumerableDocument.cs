@@ -6,11 +6,11 @@ namespace QuantumForge.Documents;
 
 internal class EnumerableDocument<TModel> : BaseDocument<TModel>, IDocument where TModel : class, new()
 {
-    private readonly MultiPrintPageSettings _multiPrintSettings;
-    public EnumerableDocument(IEnumerable<TModel> models, MultiPrintPageSettings? multiPrintSettings = null)
+    private readonly QuantumForgePageSettings _multiPrintSettings;
+    public EnumerableDocument(IEnumerable<TModel> models, QuantumForgePageSettings? multiPrintSettings = null)
         : base(models, multiPrintSettings)
     {
-        _multiPrintSettings = multiPrintSettings ?? new MultiPrintPageSettings();
+        _multiPrintSettings = multiPrintSettings ?? new QuantumForgePageSettings();
     }
 
     public void Compose(IDocumentContainer ducoment)

@@ -6,7 +6,7 @@ using QuestPDF.Infrastructure;
 
 var accounts = InvoiceDataSource.GetAccounts();
 
-var settings = new MultiPrintPageSettings();
+var settings = new QuantumForgePageSettings();
 
 settings.Background = "#739072";
 
@@ -33,4 +33,4 @@ settings.Footer.Settings = new();
 settings.Footer.Settings.Background = "#3A4D39";
 settings.Footer.Settings.TextStyle = TextStyle.Default.FontColor("#ECE3CE")
                                                       .FontSize(10);
-MultiPrintService.GeneratePdfAndShow<AccountModel>(accounts, settings);
+QuantumForgeService.GeneratePdfAndShow<AccountModel>(accounts, settings);

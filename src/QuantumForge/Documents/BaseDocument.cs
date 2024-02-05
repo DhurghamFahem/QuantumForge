@@ -12,9 +12,9 @@ internal abstract class BaseDocument<TModel> where TModel : class, new()
     protected Dictionary<int, Dictionary<string, object?>> ValueByColumnNameByRowIndex = [];
     protected List<ColumnInfo> ColumnsInfo = [];
     protected readonly IEnumerable<TModel> Models;
-    private readonly MultiPrintPageSettings _multiPrintSettings;
+    private readonly QuantumForgePageSettings _multiPrintSettings;
 
-    public BaseDocument(IEnumerable<TModel> models, MultiPrintPageSettings? multiPrintSettings = null)
+    public BaseDocument(IEnumerable<TModel> models, QuantumForgePageSettings? multiPrintSettings = null)
     {
         QuestPDF.Settings.License = LicenseType.Community;
         Models = models;

@@ -3,7 +3,7 @@ using QuestPDF.Infrastructure;
 
 namespace QuantumForge.Settings;
 
-public class MultiPrintPageSettings
+public class QuantumForgePageSettings
 {
     public float Width { get; set; } = PageSizes.A4.Width;
     public float Height { get; set; } = PageSizes.A4.Height;
