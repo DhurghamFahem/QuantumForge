@@ -1,6 +1,6 @@
-# MultiPrint
+# QuantumForge
 
-MultiPrint is a versatile C# utility for printing enumerables and data grids directly. It allows you to easily visualize and work with tabular data in your applications.
+QuantumForge is a versatile C# utility for printing enumerables and data grids directly. It allows you to easily visualize and work with tabular data in your applications.
 
 ## Features
 
@@ -10,62 +10,62 @@ MultiPrint is a versatile C# utility for printing enumerables and data grids dir
 
 ## Installation
 
-To use MultiPrint in your C# application, you can choose one of the following methods:
+To use QuantumForge in your C# application, you can choose one of the following methods:
 
 ### NuGet Package
 
-You can install the MultiPrint library via [NuGet](https://www.nuget.org/).
+You can install the QuantumForge library via [NuGet](https://www.nuget.org/).
 
 ```bash
-dotnet add package MultiPrint
+dotnet add package QuantumForge
 ```
 
 ## Usage
 
-MultiPrint makes it easy to print enumerables and data grids in a user-friendly format. Below are examples of how to use the package's features:
+QuantumForge makes it easy to print enumerables and data grids in a user-friendly format. Below are examples of how to use the package's features:
 
 ### Printing Enumerables
 
-To print an enumerable collection, you can use the `MultiPrintService` class. Here's an example of printing a list of accounts:
+To print an enumerable collection, you can use the `QuantumForgeService` class. Here's an example of printing a list of accounts:
 
 ```csharp
-using MultiPrint.Services;
+using QuantumForge.Services;
 
 var accounts = InvoiceDataSource.GetAccounts();
-MultiPrintService.GeneratePdf(accounts);
+QuantumForgeService.GeneratePdf(accounts);
 ```
 ### Printing WinForms DataGridView
 
-To print a DataGridView content, you can use the `MultiPrintService` class. Here's an example of printing a DataGridView content:
+To print a DataGridView content, you can use the `QuantumForgeService` class. Here's an example of printing a DataGridView content:
 
 ```csharp
-using MultiPrint.Services;
+using QuantumForge.Services;
 
-MultiPrintService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
+QuantumForgeService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
 ```
 
 ### Printing WPF DataGrid
 
-To print a DataGrid content, you can use the `MultiPrintService` class. Here's an example of printing a DataGrid content:
+To print a DataGrid content, you can use the `QuantumForgeService` class. Here's an example of printing a DataGrid content:
 
 ```csharp
-using MultiPrint.Services;
+using QuantumForge.Services;
 
-MultiPrintService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
+QuantumForgeService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
 ```
 
-You can easily tailor the printing output to meet their specific needs by adjusting various settings within the MultiPrint package. To control the appearance of your printed content, you can customize header and footer content, allowing you to include additional information or branding elements. Furthermore, you have the flexibility to set the width and height of the printed pages to match your preferred paper size or layout. You can adjust table settings, such as column alignment, column widths, and cell formatting, to ensure the printed data grid reflects your desired presentation. This level of customization empowers you to create professional and tailored printouts that seamlessly integrate with your application's style and requirements.
+You can easily tailor the printing output to meet their specific needs by adjusting various settings within the QuantumForge package. To control the appearance of your printed content, you can customize header and footer content, allowing you to include additional information or branding elements. Furthermore, you have the flexibility to set the width and height of the printed pages to match your preferred paper size or layout. You can adjust table settings, such as column alignment, column widths, and cell formatting, to ensure the printed data grid reflects your desired presentation. This level of customization empowers you to create professional and tailored printouts that seamlessly integrate with your application's style and requirements.
 
 ```csharp
-using MultiPrint.Services;
-using MultiPrint.Settings;
+using QuantumForge.Services;
+using QuantumForge.Settings;
 using PrintEnumerablesExample;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
 var accounts = InvoiceDataSource.GetAccounts();
 
-var settings = new MultiPrintPageSettings();
+var settings = new QuantumForgePageSettings();
 
 settings.Background = "#739072";
 
@@ -92,6 +92,6 @@ settings.Footer.Settings = new();
 settings.Footer.Settings.Background = "#3A4D39";
 settings.Footer.Settings.TextStyle = TextStyle.Default.FontColor("#ECE3CE")
                                                       .FontSize(10);
-MultiPrintService.GeneratePdf(accounts, settings);
+QuantumForgeService.GeneratePdf(accounts, settings);
 ```
 
