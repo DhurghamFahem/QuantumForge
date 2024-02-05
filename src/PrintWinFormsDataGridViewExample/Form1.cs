@@ -17,7 +17,7 @@ public partial class Form1 : Form
 
     private void btnGeneratePdf_Click(object sender, EventArgs e)
     {
-        MultiPrintService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
+        MultiPrintService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
     }
 
     private void btnGenerateXbs_Click(object sender, EventArgs e)
