@@ -1,7 +1,7 @@
 ﻿using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 
-namespace MultiPrint.Settings;
+namespace QuantumForge.Settings;
 
 public class MultiPrintPageSettings
 {

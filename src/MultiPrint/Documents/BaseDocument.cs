@@ -1,11 +1,11 @@
-﻿using MultiPrint.Attributes;
-using MultiPrint.DTOs;
-using MultiPrint.Settings;
+﻿using QuantumForge.Attributes;
+using QuantumForge.DTOs;
+using QuantumForge.Settings;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System.Reflection;
 
-namespace MultiPrint.Documents;
+namespace QuantumForge.Documents;
 
 internal abstract class BaseDocument<TModel> where TModel : class, new()
 {
@@ -49,13 +49,13 @@ internal abstract class BaseDocument<TModel> where TModel : class, new()
     {
         foreach (var property in properties)
         {
-            var ignoreAttribute = (MultiPrintIgnore)Attribute.GetCustomAttribute(property, typeof(MultiPrintIgnore))!;
+            var ignoreAttribute = (QuantumForgeIgnore)Attribute.GetCustomAttribute(property, typeof(QuantumForgeIgnore))!;
             if (ignoreAttribute != null)
                 continue;
-            var nameAttribute = (MultiPrintNameAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintNameAttribute))!;
-            var widthAttribute = (MultiPrintWidthAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintWidthAttribute))!;
-            var canSumAttribute = (MultiPrintCanSumAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintCanSumAttribute))!;
-            var summationTextAttribute = (MultiPrintSummationTextAttribute)Attribute.GetCustomAttribute(property, typeof(MultiPrintSummationTextAttribute))!;
+            var nameAttribute = (QuantumForgeNameAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumForgeNameAttribute))!;
+            var widthAttribute = (QuantumForgeWidthAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumForgeWidthAttribute))!;
+            var canSumAttribute = (QuantumForgeCanSumAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumForgeCanSumAttribute))!;
+            var summationTextAttribute = (QuantumForgeSummationTextAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumForgeSummationTextAttribute))!;
 
             var columnInfo = new ColumnInfo
             {

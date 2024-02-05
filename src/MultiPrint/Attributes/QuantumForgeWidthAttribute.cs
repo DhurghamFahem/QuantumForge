@@ -1,7 +1,7 @@
-﻿namespace MultiPrint.Attributes;
+﻿namespace QuantumForge.Attributes;
 
 [AttributeUsage(AttributeTargets.All)]
-public class MultiPrintWidthAttribute : Attribute
+public class QuantumForgeWidthAttribute : Attribute
 {
     private float _widthValue;
     protected float WidthValue
@@ -19,11 +19,11 @@ public class MultiPrintWidthAttribute : Attribute
     }
     public virtual float Width => WidthValue;
 
-    public MultiPrintWidthAttribute() : this(0)
+    public QuantumForgeWidthAttribute() : this(0)
     {
     }
 
-    public MultiPrintWidthAttribute(float width)
+    public QuantumForgeWidthAttribute(float width)
     {
         WidthValue = width;
     }

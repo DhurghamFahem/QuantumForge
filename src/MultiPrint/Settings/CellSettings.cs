@@ -1,6 +1,6 @@
 ﻿using QuestPDF.Infrastructure;
 
-namespace MultiPrint.Settings;
+namespace QuantumForge.Settings;
 
 public class CellSettings
 {

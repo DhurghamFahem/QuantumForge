@@ -1,20 +1,20 @@
-﻿using MultiPrint.Attributes;
+﻿using QuantumForge.Attributes;
 
 namespace PrintWinFormsDataGridViewExample;
 
 public class AccountModel
 {
-    [MultiPrintName("رقم الحساب")]
+    [QuantumForgeName("رقم الحساب")]
     public int Id { get; set; }
-    [MultiPrintName("رقم الحساب")]
-    [MultiPrintWidth(200)]
+    [QuantumForgeName("رقم الحساب")]
+    [QuantumForgeWidth(200)]
     public string Name { get; set; } = "";
     public string Phone { get; set; } = "";
     public DateTime Birthdate { get; set; }
-    [MultiPrintCanSum]
-    [MultiPrintSummationText("الرصيد", true)]
+    [QuantumForgeCanSum]
+    [QuantumForgeSummationText("الرصيد", true)]
     public decimal Balance { get; set; }
-    [MultiPrintIgnore]
+    [QuantumForgeIgnore]
     public bool Active { get; set; }
 }
 

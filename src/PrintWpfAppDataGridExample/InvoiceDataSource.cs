@@ -1,20 +1,20 @@
-﻿using MultiPrint.Attributes;
+﻿using QuantumForge.Attributes;
 
 namespace PrintWpfAppDataGridExample;
 
 public class AccountModel
 {
-    [MultiPrintName("رقم الحساب")]
+    [QuantumForgeName("رقم الحساب")]
     public int Id { get; set; }
-    [MultiPrintName("اسم الحساب")]
-    [MultiPrintWidth(200)]
+    [QuantumForgeName("اسم الحساب")]
+    [QuantumForgeWidth(200)]
     public string Name { get; set; } = "";
     public string Phone { get; set; } = "";
     public DateTime Birthdate { get; set; }
-    [MultiPrintCanSum]
-    [MultiPrintSummationText("الرصيد", true)]
+    [QuantumForgeCanSum]
+    [QuantumForgeSummationText("الرصيد", true)]
     public decimal Balance { get; set; }
-    [MultiPrintIgnore]
+    [QuantumForgeIgnore]
     public bool Active { get; set; }
 }
 

@@ -1,8 +1,8 @@
-﻿using MultiPrint.Settings;
+﻿using QuantumForge.Settings;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace MultiPrint.Documents;
+namespace QuantumForge.Documents;
 
 internal class EnumerableDocument<TModel> : BaseDocument<TModel>, IDocument where TModel : class, new()
 {

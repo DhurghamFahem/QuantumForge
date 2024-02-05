@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiPrint", "MultiPrint\MultiPrint.csproj", "{71C27115-FEDE-48A3-93BB-64F85D20B270}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumForge", "MultiPrint\QuantumForge.csproj", "{71C27115-FEDE-48A3-93BB-64F85D20B270}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintEnumerablesExample", "PrintEnumerablesExample\PrintEnumerablesExample.csproj", "{F821F1A8-72B5-44DD-8084-6775502948FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintWinFormsDataGridViewExample", "PrintWinFormsDataGridViewExample\PrintWinFormsDataGridViewExample.csproj", "{ECEB2E1C-5C6F-42C9-8768-298B3EF84F21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintWinFormsDataGridViewExample", "PrintWinFormsDataGridViewExample\PrintWinFormsDataGridViewExample.csproj", "{ECEB2E1C-5C6F-42C9-8768-298B3EF84F21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintWpfAppDataGridExample", "PrintWpfAppDataGridExample\PrintWpfAppDataGridExample.csproj", "{28DF446C-AACE-4684-B846-2E965E73DAE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintWpfAppDataGridExample", "PrintWpfAppDataGridExample\PrintWpfAppDataGridExample.csproj", "{28DF446C-AACE-4684-B846-2E965E73DAE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

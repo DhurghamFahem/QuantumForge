@@ -1,4 +1,4 @@
-﻿namespace MultiPrint.DTOs;
+﻿namespace QuantumForge.DTOs;
 
 internal class ColumnInfo
 {

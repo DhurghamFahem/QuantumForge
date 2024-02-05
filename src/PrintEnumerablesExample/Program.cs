@@ -1,5 +1,5 @@
 ﻿using MultiPrint.Services;
-using MultiPrint.Settings;
+using QuantumForge.Settings;
 using PrintEnumerablesExample;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;

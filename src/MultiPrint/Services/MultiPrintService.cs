@@ -1,5 +1,5 @@
-﻿using MultiPrint.Documents;
-using MultiPrint.Settings;
+﻿using QuantumForge.Documents;
+using QuantumForge.Settings;
 using QuestPDF.Fluent;
 using System.ComponentModel;
 using System.Diagnostics;
