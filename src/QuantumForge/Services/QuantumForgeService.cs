@@ -4,7 +4,7 @@ using QuestPDF.Fluent;
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace MultiPrint.Services;
+namespace QuantumForge.Services;
 
 public class QuantumForgeService
 {

@@ -1,4 +1,4 @@
-using MultiPrint.Services;
+using QuantumForge.Services;
 
 namespace PrintWinFormsDataGridViewExample;
 

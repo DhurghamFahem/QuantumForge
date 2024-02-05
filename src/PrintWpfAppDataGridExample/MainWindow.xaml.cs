@@ -1,6 +1,5 @@
-﻿using MultiPrint.Services;
+﻿using QuantumForge.Services;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace PrintWpfAppDataGridExample
 {
