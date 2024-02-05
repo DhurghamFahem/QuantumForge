@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiPrint\QuantumForge.csproj" />
+    <ProjectReference Include="..\QuantumForge\QuantumForge.csproj" />
   </ItemGroup>
 
 </Project>
