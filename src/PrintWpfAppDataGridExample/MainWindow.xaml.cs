@@ -1,5 +1,6 @@
 ﻿using MultiPrint.Services;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace PrintWpfAppDataGridExample
 {
@@ -19,19 +20,14 @@ namespace PrintWpfAppDataGridExample
             dataGrid.ItemsSource = accounts;
         }
 
-        private void btnPrint_Click(object sender, RoutedEventArgs e)
-        {
-            MultiPrintService.Print<AccountModel>(dataGrid.ItemsSource);
-        }
-
         private void btnGeneratePdf_Click(object sender, RoutedEventArgs e)
         {
-            MultiPrintService.GeneratePdf<AccountModel>(dataGrid.ItemsSource);
+            MultiPrintService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
         }
 
         private void btnGenerateXbs_Click(object sender, RoutedEventArgs e)
         {
-            MultiPrintService.GenerateXps<AccountModel>(dataGrid.ItemsSource);
+            MultiPrintService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
         }
     }
 }

@@ -15,11 +15,6 @@ public partial class Form1 : Form
         dataGridView1.DataSource = accounts;
     }
 
-    private void btnPrint_Click(object sender, EventArgs e)
-    {
-        MultiPrintService.Print<AccountModel>(dataGridView1.DataSource);
-    }
-
     private void btnGeneratePdf_Click(object sender, EventArgs e)
     {
         MultiPrintService.GeneratePdf<AccountModel>(dataGridView1.DataSource);
@@ -27,6 +22,6 @@ public partial class Form1 : Form
 
     private void btnGenerateXbs_Click(object sender, EventArgs e)
     {
-        MultiPrintService.GenerateXps<AccountModel>(dataGridView1.DataSource);
+        MultiPrintService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
     }
 }

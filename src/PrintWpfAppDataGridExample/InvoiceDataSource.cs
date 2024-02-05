@@ -6,7 +6,7 @@ public class AccountModel
 {
     [MultiPrintName("رقم الحساب")]
     public int Id { get; set; }
-    [MultiPrintName("رقم الحساب")]
+    [MultiPrintName("اسم الحساب")]
     [MultiPrintWidth(200)]
     public string Name { get; set; } = "";
     public string Phone { get; set; } = "";

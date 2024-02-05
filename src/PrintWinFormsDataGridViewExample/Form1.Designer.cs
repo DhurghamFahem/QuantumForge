@@ -30,7 +30,6 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            btnPrint = new Button();
             btnGeneratePdf = new Button();
             btnGenerateXbs = new Button();
             dataGridView1 = new DataGridView();
@@ -62,7 +61,6 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(btnPrint);
             flowLayoutPanel1.Controls.Add(btnGeneratePdf);
             flowLayoutPanel1.Controls.Add(btnGenerateXbs);
             flowLayoutPanel1.Dock = DockStyle.Fill;
@@ -72,19 +70,9 @@
             flowLayoutPanel1.Size = new Size(800, 50);
             flowLayoutPanel1.TabIndex = 0;
             // 
-            // btnPrint
-            // 
-            btnPrint.Location = new Point(3, 3);
-            btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(173, 44);
-            btnPrint.TabIndex = 1;
-            btnPrint.Text = "Print";
-            btnPrint.UseVisualStyleBackColor = true;
-            btnPrint.Click += btnPrint_Click;
-            // 
             // btnGeneratePdf
             // 
-            btnGeneratePdf.Location = new Point(182, 3);
+            btnGeneratePdf.Location = new Point(3, 3);
             btnGeneratePdf.Name = "btnGeneratePdf";
             btnGeneratePdf.Size = new Size(173, 44);
             btnGeneratePdf.TabIndex = 2;
@@ -94,7 +82,7 @@
             // 
             // btnGenerateXbs
             // 
-            btnGenerateXbs.Location = new Point(361, 3);
+            btnGenerateXbs.Location = new Point(182, 3);
             btnGenerateXbs.Name = "btnGenerateXbs";
             btnGenerateXbs.Size = new Size(173, 44);
             btnGenerateXbs.TabIndex = 3;
@@ -167,7 +155,6 @@
 
         private TableLayoutPanel tableLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button btnPrint;
         private Button btnGeneratePdf;
         private Button btnGenerateXbs;
         private DataGridView dataGridView1;

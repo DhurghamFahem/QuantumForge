@@ -8,10 +8,10 @@ namespace MultiPrint.Services;
 
 public class MultiPrintService
 {
-    public static void GeneratePdf<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    public static byte[] GeneratePdf<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         var accountsDocument = new EnumerableDocument<TModel>(enumerable, settings);
-        accountsDocument.GeneratePdf();
+        return accountsDocument.GeneratePdf();
     }
 
     public static void GeneratePdf<TModel>(IEnumerable<TModel> enumerable, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
@@ -26,11 +26,11 @@ public class MultiPrintService
         accountsDocument.GeneratePdf(filePath);
     }
 
-    public static void GeneratePdf<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    public static byte[] GeneratePdf<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
             throw new InvalidEnumArgumentException("Cannot generate pdf from non Enumerable data source.");
-        GeneratePdf(enumerable, settings);
+        return GeneratePdf(enumerable, settings);
     }
 
     public static void GeneratePdf<TModel>(object dataSource, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
@@ -40,6 +40,16 @@ public class MultiPrintService
         GeneratePdf(enumerable, stream, settings);
     }
 
+    public static void GeneratePdfAndShow<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    {
+        if (dataSource is IEnumerable<TModel> enumerable == false)
+            throw new InvalidEnumArgumentException("Cannot generate pdf from non Enumerable data source.");
+        var filePath = GetFilePath();
+        GeneratePdf(enumerable, filePath, settings);
+        if (File.Exists(filePath))
+            ViewFile(filePath);
+    }
+
     public static void GeneratePdf<TModel>(object dataSource, string filePath, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
@@ -47,10 +57,10 @@ public class MultiPrintService
         GeneratePdf(enumerable, filePath, settings);
     }
 
-    public static void GenerateXps<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    public static byte[] GenerateXps<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         var accountsDocument = new EnumerableDocument<TModel>(enumerable, settings);
-        accountsDocument.GenerateXps();
+        return accountsDocument.GenerateXps();
     }
 
     public static void GenerateXps<TModel>(IEnumerable<TModel> enumerable, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
@@ -65,11 +75,12 @@ public class MultiPrintService
         accountsDocument.GenerateXps(filePath);
     }
 
-    public static void GenerateXps<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    public static byte[] GenerateXps<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
+
         if (dataSource is IEnumerable<TModel> enumerable == false)
             throw new InvalidEnumArgumentException("Cannot generate xps from non Enumerable data source.");
-        GenerateXps(enumerable, settings);
+        return GenerateXps(enumerable, settings);
     }
 
     public static void GenerateXps<TModel>(object dataSource, Stream stream, MultiPrintPageSettings? settings = null) where TModel : class, new()
@@ -79,35 +90,22 @@ public class MultiPrintService
         GenerateXps(enumerable, stream, settings);
     }
 
-    public static void GenerateXps<TModel>(object dataSource, string filePath, MultiPrintPageSettings? settings = null) where TModel : class, new()
+    public static void GenerateXpsAndShow<TModel>(object dataSource, MultiPrintPageSettings? settings = null) where TModel : class, new()
     {
         if (dataSource is IEnumerable<TModel> enumerable == false)
             throw new InvalidEnumArgumentException("Cannot generate xps from non Enumerable data source.");
+        var filePath = GetFilePath();
         GenerateXps(enumerable, filePath, settings);
+        if (File.Exists(filePath))
+            ViewFile(filePath);
     }
 
-    public static void Print<TModel>(IEnumerable<TModel> enumerable, MultiPrintPageSettings? settings = null, string printerName = "") where TModel : class, new()
+    private static void ViewFile(string filePath)
     {
-        var folderPath = Path.GetTempPath();
-        var filePath = Path.Combine(folderPath, $"{Guid.NewGuid()}.pdf");
-        GeneratePdf(enumerable, filePath, settings);
         if (File.Exists(filePath) == false)
-            throw new Exception("File creation failed.");
-        Print(filePath, printerName);
-    }
-
-    public static void Print<TModel>(object dataSource, MultiPrintPageSettings? settings = null, string printerName = "") where TModel : class, new()
-    {
-        if (dataSource is IEnumerable<TModel> enumerable == false)
-            throw new InvalidEnumArgumentException("Cannot print non Enumerable data source.");
-        Print(enumerable, settings, printerName);
-    }
-
-    private static void Print(string filePath, string printerName)
-    {
+            return;
         var info = new ProcessStartInfo
         {
-            Verb = "print",
             FileName = filePath,
             CreateNoWindow = true,
             WindowStyle = ProcessWindowStyle.Hidden,
@@ -119,16 +117,12 @@ public class MultiPrintService
             StartInfo = info
         };
         p.Start();
+    }
 
-        long ticks = -1;
-        while (ticks != p.TotalProcessorTime.Ticks)
-        {
-            ticks = p.TotalProcessorTime.Ticks;
-            Thread.Sleep(1000);
-        }
-
-        if (false == p.CloseMainWindow())
-            p.Kill();
-        File.Delete(filePath);
+    private static string GetFilePath()
+    {
+        var folderPath = Path.GetTempPath();
+        var filePath = Path.Combine(folderPath, $"{Guid.NewGuid()}.pdf");
+        return filePath;
     }
 }
