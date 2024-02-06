@@ -3,15 +3,15 @@
 [AttributeUsage(AttributeTargets.All)]
 public class QuantumForgeNameAttribute : Attribute
 {
-    protected string NameValue { get; set; } = "";
-    public virtual string Name => NameValue;
+    protected string DisplayNameValue { get; set; } = "";
+    public virtual string DisplayName => DisplayNameValue;
 
     public QuantumForgeNameAttribute() : this(string.Empty)
     {
     }
 
-    public QuantumForgeNameAttribute(string name)
+    public QuantumForgeNameAttribute(string displayName)
     {
-        NameValue = name;
+        DisplayNameValue = displayName;
     }
 }

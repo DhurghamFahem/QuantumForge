@@ -21,7 +21,7 @@ namespace PrintWpfAppDataGridExample
 
         private void btnGeneratePdf_Click(object sender, RoutedEventArgs e)
         {
-            QuantumForgeService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
+            var bytes = QuantumForgeService.GeneratePdf<AccountModel>(dataGrid.ItemsSource);
         }
 
         private void btnGenerateXbs_Click(object sender, RoutedEventArgs e)

@@ -11,4 +11,7 @@
     <PackageReference Include="QuestPDF" Version="2023.10.1" />
   </ItemGroup>
 
+	<PropertyGroup>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
 </Project>

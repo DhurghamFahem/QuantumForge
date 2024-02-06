@@ -61,7 +61,7 @@ internal abstract class BaseDocument<TModel> where TModel : class, new()
             {
                 Type = property.PropertyType,
                 Name = property.Name,
-                DisplayName = nameAttribute == null ? property.Name : nameAttribute.Name,
+                DisplayName = nameAttribute == null ? property.Name : nameAttribute.DisplayName,
                 Width = widthAttribute == null ? 0 : widthAttribute.Width,
                 CanSum = canSumAttribute != null,
                 SummationText = summationTextAttribute == null ? "" : summationTextAttribute.SummationText,
