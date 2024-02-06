@@ -5,13 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="QuestPDF" Version="2023.10.1" />
+	<None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
-
-	<PropertyGroup>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	</PropertyGroup>
 </Project>
