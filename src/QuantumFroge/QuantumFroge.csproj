@@ -7,14 +7,14 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageId>QuantumForge</PackageId>
+	<PackageId>QuantumFroge</PackageId>
 	<Version>1.0.1</Version>
 	<Authors>Dhurgham</Authors>
 	<Owners>Dhurgham</Owners>
 	<Description>
-		QuantumForge is a lightweight NuGet package for effortless generation of PDFs and XPS documents from enumerables, DataGridViews in Windows Forms, and DataGrids in WPF. Customize column settings using attributes, and enjoy features like getting byte arrays, saving to file paths, and direct display in the browser.
+		QuantumFroge is a lightweight NuGet package for effortless generation of PDFs and XPS documents from enumerables, DataGridViews in Windows Forms, and DataGrids in WPF. Customize column settings using attributes, and enjoy features like getting byte arrays, saving to file paths, and direct display in the browser.
 	</Description>
-	<PackageProjectUrl>https://github.com/DhurghamFahem/QuantumForge</PackageProjectUrl>
+	<PackageProjectUrl>https://github.com/DhurghamFahem/QuantumFroge</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

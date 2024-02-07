@@ -12,7 +12,7 @@ public class AccountModel
     public string Name { get; set; } = "";
     public string Phone { get; set; } = "";
     public DateTime Birthdate { get; set; }
-    [QuantumFrogeCanSum] // If the column is numeric you can set QuantumForgeCanSum to display the summation of the column in the table footer.
+    [QuantumFrogeCanSum] // If the column is numeric you can set QuantumFrogeCanSum to display the summation of the column in the table footer.
     [QuantumFrogeSummationText(summationText: "Balance", reverse: true)] // You can change the summation text to any thing.
     public decimal Balance { get; set; }
     [QuantumFrogeIgnore] // To ignore the columns to be generated in the document.
