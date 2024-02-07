@@ -1,20 +1,20 @@
-﻿using QuantumForge.Attributes;
-using QuantumForge.DTOs;
-using QuantumForge.Settings;
+﻿using QuantumFroge.Attributes;
+using QuantumFroge.DTOs;
+using QuantumFroge.Settings;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using System.Reflection;
 
-namespace QuantumForge.Documents;
+namespace QuantumFroge.Documents;
 
 internal abstract class BaseDocument<TModel> where TModel : class, new()
 {
     protected Dictionary<int, Dictionary<string, object?>> ValueByColumnNameByRowIndex = [];
     protected List<ColumnInfo> ColumnsInfo = [];
     protected readonly IEnumerable<TModel> Models;
-    private readonly QuantumForgePageSettings _multiPrintSettings;
+    private readonly QuantumFrogePageSettings _multiPrintSettings;
 
-    public BaseDocument(IEnumerable<TModel> models, QuantumForgePageSettings? multiPrintSettings = null)
+    public BaseDocument(IEnumerable<TModel> models, QuantumFrogePageSettings? multiPrintSettings = null)
     {
         QuestPDF.Settings.License = LicenseType.Community;
         Models = models;
@@ -49,13 +49,13 @@ internal abstract class BaseDocument<TModel> where TModel : class, new()
     {
         foreach (var property in properties)
         {
-            var ignoreAttribute = (QuantumForgeIgnore)Attribute.GetCustomAttribute(property, typeof(QuantumForgeIgnore))!;
+            var ignoreAttribute = (QuantumFrogeIgnore)Attribute.GetCustomAttribute(property, typeof(QuantumFrogeIgnore))!;
             if (ignoreAttribute != null)
                 continue;
-            var nameAttribute = (QuantumForgeNameAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumForgeNameAttribute))!;
-            var widthAttribute = (QuantumForgeWidthAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumForgeWidthAttribute))!;
-            var canSumAttribute = (QuantumForgeCanSumAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumForgeCanSumAttribute))!;
-            var summationTextAttribute = (QuantumForgeSummationTextAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumForgeSummationTextAttribute))!;
+            var nameAttribute = (QuantumFrogeNameAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumFrogeNameAttribute))!;
+            var widthAttribute = (QuantumFrogeWidthAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumFrogeWidthAttribute))!;
+            var canSumAttribute = (QuantumFrogeCanSumAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumFrogeCanSumAttribute))!;
+            var summationTextAttribute = (QuantumFrogeSummationTextAttribute)Attribute.GetCustomAttribute(property, typeof(QuantumFrogeSummationTextAttribute))!;
 
             var columnInfo = new ColumnInfo
             {

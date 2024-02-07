@@ -1,7 +1,7 @@
-﻿namespace QuantumForge.Attributes;
+﻿namespace QuantumFroge.Attributes;
 
 [AttributeUsage(AttributeTargets.All)]
-public class QuantumForgeWidthAttribute : Attribute
+public class QuantumFrogeWidthAttribute : Attribute
 {
     private float _widthValue;
     protected float WidthValue
@@ -19,11 +19,11 @@ public class QuantumForgeWidthAttribute : Attribute
     }
     public virtual float Width => WidthValue;
 
-    public QuantumForgeWidthAttribute() : this(0)
+    public QuantumFrogeWidthAttribute() : this(0)
     {
     }
 
-    public QuantumForgeWidthAttribute(float width)
+    public QuantumFrogeWidthAttribute(float width)
     {
         WidthValue = width;
     }

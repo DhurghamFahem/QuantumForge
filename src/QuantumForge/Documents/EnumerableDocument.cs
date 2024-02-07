@@ -1,16 +1,16 @@
-﻿using QuantumForge.Settings;
+﻿using QuantumFroge.Settings;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace QuantumForge.Documents;
+namespace QuantumFroge.Documents;
 
 internal class EnumerableDocument<TModel> : BaseDocument<TModel>, IDocument where TModel : class, new()
 {
-    private readonly QuantumForgePageSettings _multiPrintSettings;
-    public EnumerableDocument(IEnumerable<TModel> models, QuantumForgePageSettings? multiPrintSettings = null)
+    private readonly QuantumFrogePageSettings _multiPrintSettings;
+    public EnumerableDocument(IEnumerable<TModel> models, QuantumFrogePageSettings? multiPrintSettings = null)
         : base(models, multiPrintSettings)
     {
-        _multiPrintSettings = multiPrintSettings ?? new QuantumForgePageSettings();
+        _multiPrintSettings = multiPrintSettings ?? new QuantumFrogePageSettings();
     }
 
     public void Compose(IDocumentContainer ducoment)

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QuantumForge\QuantumForge.csproj" />
+    <ProjectReference Include="..\QuantumForge\QuantumFroge.csproj" />
   </ItemGroup>
 
 </Project>

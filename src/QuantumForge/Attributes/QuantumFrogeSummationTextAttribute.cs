@@ -1,18 +1,18 @@
-﻿namespace QuantumForge.Attributes;
+﻿namespace QuantumFroge.Attributes;
 
 [AttributeUsage(AttributeTargets.All)]
-public class QuantumForgeSummationTextAttribute : Attribute
+public class QuantumFrogeSummationTextAttribute : Attribute
 {
     protected string SummationTextValue { get; set; } = "";
     protected bool ReverseValue { get; set; }
     public virtual string SummationText => SummationTextValue;
     public virtual bool Reverse => ReverseValue;
 
-    public QuantumForgeSummationTextAttribute() : this(string.Empty, false)
+    public QuantumFrogeSummationTextAttribute() : this(string.Empty, false)
     {
     }
 
-    public QuantumForgeSummationTextAttribute(string summationText, bool reverse = false)
+    public QuantumFrogeSummationTextAttribute(string summationText, bool reverse = false)
     {
         SummationTextValue = summationText;
         ReverseValue = reverse;

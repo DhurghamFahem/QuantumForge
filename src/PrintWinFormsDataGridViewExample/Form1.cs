@@ -1,4 +1,4 @@
-using QuantumForge.Services;
+using QuantumFroge.Services;
 
 namespace PrintWinFormsDataGridViewExample;
 
@@ -17,11 +17,11 @@ public partial class Form1 : Form
 
     private void btnGeneratePdf_Click(object sender, EventArgs e)
     {
-        QuantumForgeService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
+        QuantumFrogeService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
     }
 
     private void btnGenerateXbs_Click(object sender, EventArgs e)
     {
-        QuantumForgeService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
+        QuantumFrogeService.GeneratePdfAndShow<AccountModel>(dataGridView1.DataSource);
     }
 }

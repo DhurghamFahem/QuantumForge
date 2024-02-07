@@ -1,6 +1,6 @@
 ﻿using QuestPDF.Infrastructure;
 
-namespace QuantumForge.Settings;
+namespace QuantumFroge.Settings;
 
 public class FooterSettings
 {

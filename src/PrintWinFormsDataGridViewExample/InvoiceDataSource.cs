@@ -1,20 +1,20 @@
-﻿using QuantumForge.Attributes;
+﻿using QuantumFroge.Attributes;
 
 namespace PrintWinFormsDataGridViewExample;
 
 public class AccountModel
 {
-    [QuantumForgeName("رقم الحساب")]
+    [QuantumFrogeName("رقم الحساب")]
     public int Id { get; set; }
-    [QuantumForgeName("رقم الحساب")]
-    [QuantumForgeWidth(200)]
+    [QuantumFrogeName("رقم الحساب")]
+    [QuantumFrogeWidth(200)]
     public string Name { get; set; } = "";
     public string Phone { get; set; } = "";
     public DateTime Birthdate { get; set; }
-    [QuantumForgeCanSum]
-    [QuantumForgeSummationText("الرصيد", true)]
+    [QuantumFrogeCanSum]
+    [QuantumFrogeSummationText("الرصيد", true)]
     public decimal Balance { get; set; }
-    [QuantumForgeIgnore]
+    [QuantumFrogeIgnore]
     public bool Active { get; set; }
 }
 

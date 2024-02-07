@@ -1,4 +1,4 @@
-﻿using QuantumForge.Services;
+﻿using QuantumFroge.Services;
 using System.Windows;
 
 namespace PrintWpfAppDataGridExample
@@ -21,12 +21,12 @@ namespace PrintWpfAppDataGridExample
 
         private void btnGeneratePdf_Click(object sender, RoutedEventArgs e)
         {
-            var bytes = QuantumForgeService.GeneratePdf<AccountModel>(dataGrid.ItemsSource);
+            var bytes = QuantumFrogeService.GeneratePdf<AccountModel>(dataGrid.ItemsSource);
         }
 
         private void btnGenerateXbs_Click(object sender, RoutedEventArgs e)
         {
-            QuantumForgeService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
+            QuantumFrogeService.GeneratePdfAndShow<AccountModel>(dataGrid.ItemsSource);
         }
     }
 }

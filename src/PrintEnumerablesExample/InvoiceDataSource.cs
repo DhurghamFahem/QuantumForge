@@ -1,21 +1,21 @@
 ﻿
-using QuantumForge.Attributes;
+using QuantumFroge.Attributes;
 
 namespace PrintEnumerablesExample;
 
 public class AccountModel
 {
-    [QuantumForgeName(displayName: "Account number")] // To display the attribute value in the generated document.
+    [QuantumFrogeName(displayName: "Account number")] // To display the attribute value in the generated document.
     public int Id { get; set; }
-    [QuantumForgeName(displayName: "Account name")]
-    [QuantumForgeWidth(width: 200)] // To set the column width in the generated document.
+    [QuantumFrogeName(displayName: "Account name")]
+    [QuantumFrogeWidth(width: 200)] // To set the column width in the generated document.
     public string Name { get; set; } = "";
     public string Phone { get; set; } = "";
     public DateTime Birthdate { get; set; }
-    [QuantumForgeCanSum] // If the column is numeric you can set QuantumForgeCanSum to display the summation of the column in the table footer.
-    [QuantumForgeSummationText(summationText: "Balance", reverse: true)] // You can change the summation text to any thing.
+    [QuantumFrogeCanSum] // If the column is numeric you can set QuantumForgeCanSum to display the summation of the column in the table footer.
+    [QuantumFrogeSummationText(summationText: "Balance", reverse: true)] // You can change the summation text to any thing.
     public decimal Balance { get; set; }
-    [QuantumForgeIgnore] // To ignore the columns to be generated in the document.
+    [QuantumFrogeIgnore] // To ignore the columns to be generated in the document.
     public bool Active { get; set; }
 }
 

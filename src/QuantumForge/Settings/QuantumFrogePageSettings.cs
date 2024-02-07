@@ -1,9 +1,9 @@
 ﻿using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 
-namespace QuantumForge.Settings;
+namespace QuantumFroge.Settings;
 
-public class QuantumForgePageSettings
+public class QuantumFrogePageSettings
 {
     public float Width { get; set; } = PageSizes.A4.Width;
     public float Height { get; set; } = PageSizes.A4.Height;

@@ -1,16 +1,16 @@
-﻿namespace QuantumForge.Attributes;
+﻿namespace QuantumFroge.Attributes;
 
 [AttributeUsage(AttributeTargets.All)]
-public class QuantumForgeNameAttribute : Attribute
+public class QuantumFrogeNameAttribute : Attribute
 {
     protected string DisplayNameValue { get; set; } = "";
     public virtual string DisplayName => DisplayNameValue;
 
-    public QuantumForgeNameAttribute() : this(string.Empty)
+    public QuantumFrogeNameAttribute() : this(string.Empty)
     {
     }
 
-    public QuantumForgeNameAttribute(string displayName)
+    public QuantumFrogeNameAttribute(string displayName)
     {
         DisplayNameValue = displayName;
     }

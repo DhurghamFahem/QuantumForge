@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintWinFormsDataGridViewEx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintWpfAppDataGridExample", "PrintWpfAppDataGridExample\PrintWpfAppDataGridExample.csproj", "{28DF446C-AACE-4684-B846-2E965E73DAE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumForge", "QuantumForge\QuantumForge.csproj", "{8A434906-0D51-42D4-93E3-CCD7D2B3CB70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumFroge", "QuantumForge\QuantumFroge.csproj", "{8A434906-0D51-42D4-93E3-CCD7D2B3CB70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

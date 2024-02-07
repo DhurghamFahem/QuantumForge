@@ -1,12 +1,12 @@
-﻿using QuantumForge.Services;
-using QuantumForge.Settings;
+﻿using QuantumFroge.Services;
+using QuantumFroge.Settings;
 using PrintEnumerablesExample;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
 var accounts = InvoiceDataSource.GetAccounts();
 
-var settings = new QuantumForgePageSettings
+var settings = new QuantumFrogePageSettings
 {
     Background = "#739072"
 };
@@ -42,4 +42,4 @@ settings.Footer.Settings = new()
 };
 
 
-QuantumForgeService.GeneratePdfAndShow<AccountModel>(accounts, settings);
+QuantumFrogeService.GeneratePdfAndShow<AccountModel>(accounts, settings);

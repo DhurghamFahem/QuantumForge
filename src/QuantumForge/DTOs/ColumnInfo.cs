@@ -1,6 +1,6 @@
-﻿namespace QuantumForge.DTOs;
+﻿namespace QuantumFroge.DTOs;
 
-internal class ColumnInfo
+public class ColumnInfo
 {
     public string Name { get; set; } = "";
     public string DisplayName { get; set; } = "";
