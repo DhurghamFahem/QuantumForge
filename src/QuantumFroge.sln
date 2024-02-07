@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintWinFormsDataGridViewEx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrintWpfAppDataGridExample", "PrintWpfAppDataGridExample\PrintWpfAppDataGridExample.csproj", "{28DF446C-AACE-4684-B846-2E965E73DAE3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumFroge", "QuantumForge\QuantumFroge.csproj", "{8A434906-0D51-42D4-93E3-CCD7D2B3CB70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuantumFroge", "QuantumFroge\QuantumFroge.csproj", "{CFE44A40-63F2-4059-9B78-84F42CC2208E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{28DF446C-AACE-4684-B846-2E965E73DAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28DF446C-AACE-4684-B846-2E965E73DAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28DF446C-AACE-4684-B846-2E965E73DAE3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A434906-0D51-42D4-93E3-CCD7D2B3CB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A434906-0D51-42D4-93E3-CCD7D2B3CB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A434906-0D51-42D4-93E3-CCD7D2B3CB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A434906-0D51-42D4-93E3-CCD7D2B3CB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE44A40-63F2-4059-9B78-84F42CC2208E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE44A40-63F2-4059-9B78-84F42CC2208E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE44A40-63F2-4059-9B78-84F42CC2208E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE44A40-63F2-4059-9B78-84F42CC2208E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
